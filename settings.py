@@ -46,6 +46,11 @@ CACHES = {
             'PICKLE_VERSION': 2,
         },
     },
+    'builtin_redis': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        # make sure to use a different redis database to avoid conflicts between cache backends
+        'LOCATION': 'redis://127.0.0.1:6379/1',
+    },
     'memcached': {
         'BACKEND': 'django.core.cache.backends.memcached.'
                    + ('PyMemcacheCache' if __DJ_V[0] > 2
